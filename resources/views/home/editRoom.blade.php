@@ -97,10 +97,30 @@ if(nullValue(old('all-bums')))
 else
     $allBums = old('all-bums');
 
+if(nullValue(old('vk-guests')))
+    $vkGuests = $room->vk_guests;
+else
+    $vkGuests = old('vk-guests');
+
+if(nullValue(old('phone-guests')))
+    $phoneGuests = $room->phone_guests;
+else
+    $phoneGuests = old('phone-guests');
+
 if(nullValue(old('comments')))
     $comments = $room->comments;
 else
     $comments = old('comments');
+
+if(nullValue(old('bums-vk')))
+    $bums_vk = $room->bums_vk;
+else
+    $bums_vk = old('bums-vk');
+
+if(nullValue(old('bums-phone')))
+    $bums_phone = $room->bums_phone;
+else
+    $bums_phone = old('bums-phone');
 ?>
 
 @extends('layouts.homeLayout')
@@ -248,6 +268,56 @@ else
                         <span class="help-block">
                         <strong>{{ $errors->first('bums') }}</strong>
                     </span>
+                    @endif
+                </div>
+            </div>
+
+            <div class="form-group{{ $errors->has('vk-guests') || $errors->has('phone-guests') ? ' has-error' : '' }}">
+
+                <div class="col-md-6 col-sm-6">
+                    <p class="text-uppercase pull-left"><b>Ссылки VK гостей</b></p>
+                    <textarea id="vk-guests" class="form-control" name="vk-guests">{!! $vkGuests !!}</textarea>
+
+                    @if ($errors->has('vk-guests'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('vk-guests') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <p class="text-uppercase pull-left"><b>Телефоны гостей</b></p>
+                    <textarea id="phone-guests" class="form-control" name="phone-guests">{!! $phoneGuests !!}</textarea>
+
+                    @if ($errors->has('phone-guests'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('phone-guests') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+
+            <div class="form-group{{ $errors->has('bums-vk') || $errors->has('bums-phone') ? ' has-error' : '' }}">
+
+                <div class="col-md-6 col-sm-6">
+                    <p class="text-uppercase pull-left"><b>Ссылки VK бомжей</b></p>
+                    <textarea id="bums-vk" class="form-control" name="bums-vk">{!! $bums_vk !!}</textarea>
+
+                    @if ($errors->has('bums-vk'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('bums-vk') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <p class="text-uppercase pull-left"><b>Телефоны бомжей</b></p>
+                    <textarea id="bums-phone" class="form-control" name="bums-phone">{!! $bums_phone !!}</textarea>
+
+                    @if ($errors->has('bums-phone'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('bums-phone') }}</strong>
+                        </span>
                     @endif
                 </div>
             </div>

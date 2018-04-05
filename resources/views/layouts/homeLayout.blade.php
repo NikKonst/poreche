@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="inner">
-                    <p>Especially for Poreche, by <a href="https://vk.com/smirnov_cpp">Maxim Smirnov</a>.</p>
+                    <p>Especially for Poreche, by <a href="https://vk.com/nikkonst">NikKonst</a>.</p>
                 </div>
 
             </div>

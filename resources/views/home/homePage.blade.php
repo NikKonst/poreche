@@ -1,3 +1,4 @@
+
 @extends('layouts.homeLayout')
 
 @section('content')
@@ -8,8 +9,21 @@
                 <form action="{{ route('home.searchRoom') }}" method="get">
                     <input placeholder="Номер комнаты" type="number" class="form-control" id="room-number-search"
                            name="room-number-search" value="{{ app('request')->input('room-number-search') }}">
+
                     <input placeholder="Имя" type="text" class="form-control" id="keywords" name="keywords"
                            value="{{ app('request')->input('keywords') }}">
+
+                    {{--<input placeholder="Тип" type="number" class="form-control" id="room-type" name="room-type"--}}
+                           {{--value="{{ app('request')->input('room-type') }}">--}}
+
+                    <select class="form-control" name="room-type" id="room-type">
+                        <option value="0">не выбрано</option>
+                        <option value="1">2 местный</option>
+                        <option value="2">3 местный</option>
+                        <option value="3">4 местный</option>
+                        <option value="4">люкс</option>
+                    </select>
+
                     <input type="submit" class="btn btn-md btn-primary" value="Поиск">
                 </form>
                 <a href="#" id="clear-search" class="btn btn-primary btn-md">Очистить поиск</a>
@@ -22,7 +36,7 @@
 
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 {{ csrf_field() }}
-            </form>
+            </form></select>
             <tr>
                 <th class="text-center">Номер комнаты</th>
                 <th class="text-center">Тип номера</th>

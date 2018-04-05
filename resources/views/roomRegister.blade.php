@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ asset('/vendor/animate.css') }}" />
     <link rel="stylesheet" href="{{ asset('/css/styles.css') }}" />
 
-    <title>Poreche 33</title>
+    <title>Poreche 34</title>
 </head>
 <body>
 <div class="register-form text-uppercase">
@@ -138,7 +138,7 @@
                     <div class="col-md-6">
                         <select class="selectpicker" name="room-type" id="room-type" onchange="roomTypeChanged()">
                             @foreach($roomTypes as $roomType)
-                                <option guestscount="{{ $roomType->number_of_guests }}" value="{{ $roomType->id }}">{{ $roomType->name . ' (' . $roomType->price . ' руб)'}}</option>
+                                <option guestscount="{{ $roomType->number_of_guests }}" value="{{ $roomType->id }}">{{ $roomType->name . ' ' . $roomType->price .'/с чел'}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -149,8 +149,8 @@
 
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-4">
-                        <button type="submit" class="btn btn-lg btn-sunny">
-                            Зарегестрироваться
+                        <button type="submit" class="btn btn-lg btn-sunny" onclick="this.disabled=true; this.form.submit();">
+                            Зарегистрироваться
                         </button>
                     </div>
                 </div>
@@ -167,6 +167,7 @@
 <script>
     jQuery(function($){
         $("#phone").mask("+7 (999) 999-99-99");
+        $("#phone-guests[]").mask("+7 (999) 999-99-99");
     });
 
     function roomTypeChanged() {
@@ -185,20 +186,34 @@
                             </div>
                         </div>
 
-                    <div class="form-group">
-                        <div class="col-lg-12">
-                            <span class="button-checkbox col-lg-6 col-xs-12">
-                                <button type="button" class="btn btn-lg btn-hot" style="width: 100%" data-color="fresh">Питание</button>
-                                <input type="checkbox" class="hidden" name="guests-food[]" />
-                                <input id="fix" type="hidden" name="guests-food[]" value="off" />
-                            </span>
-                            <span class="button-checkbox col-lg-6 col-xs-12">
-                                <button type="button" class="btn btn-lg btn-hot" style="width: 100%"  data-color="fresh">Трансфер</button>
-                                <input type="checkbox" class="hidden" name="guests-transfer[]" />
-                                <input id="fix" type="hidden" name="guests-transfer[]" value="off" />
-                            </span>
-                        </div>
-                    </div>`;
+                     <div class="form-group">
+                            <label for="vk-url" class="col-md-4 control-label">Ссылка VK гостя</label>
+                            <div class="col-md-8">
+                                <input id="vk-guests[]" type="text" class="form-control" name="vk-guests[]" value="" required>
+                            </div>
+                     </div>
+
+                     <div class="form-group">
+                            <label for="phone" class="col-md-4 control-label">Телефон гостя</label>
+                            <div class="col-md-8">
+                                <input id="phone-guests[]" type="tel" class="form-control" name="phone-guests[]" value=""  required>
+                            </div>
+                     </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                <span class="button-checkbox col-lg-6 col-xs-12">
+                                    <button type="button" class="btn btn-lg btn-hot" style="width: 100%" data-color="fresh">Питание</button>
+                                    <input type="checkbox" class="hidden" name="guests-food[]" />
+                                    <input id="fix" type="hidden" name="guests-food[]" value="off" />
+                                </span>
+                                <span class="button-checkbox col-lg-6 col-xs-12">
+                                    <button type="button" class="btn btn-lg btn-hot" style="width: 100%"  data-color="fresh">Трансфер</button>
+                                    <input type="checkbox" class="hidden" name="guests-transfer[]" />
+                                    <input id="fix" type="hidden" name="guests-transfer[]" value="off" />
+                                </span>
+                            </div>
+                        </div>`;
             }
             $("div.guests-block").html(content);
 
@@ -278,6 +293,11 @@
             });
             $('div.guests-block').fadeIn();
             $('.main-block').fadeIn();
+        });
+
+        jQuery(function($){
+            $("#phone").mask("+7 (999) 999-99-99");
+            $("#phone-guests").mask("+7 (999) 999-99-99");
         });
     }
 

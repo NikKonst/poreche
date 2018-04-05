@@ -41,6 +41,11 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+//$app->withFacades();
+//$app->register(App\Providers\AppServiceProvider::class);
+//
+//$app->configure('services');
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application

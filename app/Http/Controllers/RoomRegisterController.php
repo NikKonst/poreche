@@ -11,7 +11,7 @@ use App\RoomType;
 class RoomRegisterController extends Controller
 {
     public function index() {
-        $isMainReg = False;
+        $isMainReg = True;
         $success = False;
 
         $roomTypes = RoomType::all();
@@ -37,7 +37,7 @@ class RoomRegisterController extends Controller
             'phone' => 'required|string|max:20',
             'email' => 'required|string|email|max:255',
             'vk-url' => 'required|string|max:255',
-            'room-boss' => 'required|string|max:255',
+//            'room-boss' => 'required|string|max:255',
             'room-type' => 'required|integer',
             'guests' => 'required|array',
             'guests-food' => 'required|array',
@@ -53,13 +53,15 @@ class RoomRegisterController extends Controller
         $room->room_type = $data['room-type'];
         $room->name = $data['first-name'] . ' ' . $data['second-name'];
         $room->vk_url = $data['vk-url'];
-        $room->room_boss = $data['room-boss'];
+        $room->room_boss = ''; //$data['room-boss'];
         $room->email = $data['email'];
         $room->phone = $data['phone'];
 
         $allGuests = '';
         $allFood = '';
         $allTransfer = '';
+        $allVKGuests = '';
+        $allPhoneGuests = '';
 
         if($data['food'] == 'on')
             $allFood = $room->name . '&#13;&#10;';
@@ -73,9 +75,20 @@ class RoomRegisterController extends Controller
             if($data['guests-transfer'][$guestNO] == 'on')
                 $allTransfer = $allTransfer . $guest . '&#13;&#10;';
         }
+
+        foreach ($data['vk-guests'] as $vkguestNO=>$vkguest) {
+            $allVKGuests = $allVKGuests . $vkguest . '&#13;&#10;';
+        }
+
+        foreach ($data['phone-guests'] as $phoneguestNO=>$phoneguest) {
+            $allPhoneGuests = $allPhoneGuests . $phoneguest . '&#13;&#10;';
+        }
+
         $room->guests = $allGuests;
         $room->food = $allFood;
         $room->transfer = $allTransfer;
+        $room->vk_guests = $allVKGuests;
+        $room->phone_guests = $allPhoneGuests;
 
         $room->save();
 
@@ -87,7 +100,7 @@ class RoomRegisterController extends Controller
         ];
 
         Mail::send('emails.successReg', $emailData, function ($message) use ($data) {
-            $message->from('noreply@poreche.com', 'Poreche');
+            $message->from('poreche34@yandex.ru', 'Poreche');
             $message->to($data['email']);
 
             $message->subject('Успешная регистрация');

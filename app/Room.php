@@ -24,6 +24,10 @@ class Room extends Model
 //        'paid_bums',
 //        'debt_bums',
 //        'all_bums',
+//        'vk_guests',
+//        'phone_guests',
+//        'bums_vk',
+//        'bums_phone',
     ];
 
     public function room_type_model() {

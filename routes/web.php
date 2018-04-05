@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/register', 'RoomRegisterController@index')->name('room-register');
-Route::get('/register/success', 'RoomRegisterController@indexSuccess')->name('room-register-success');
-Route::post('/register', 'RoomRegisterController@registerRoom');
+Route::get('/register34', 'RoomRegisterController@index')->name('room-register');
+Route::get('/register34/success', 'RoomRegisterController@indexSuccess')->name('room-register-success');
+Route::post('/register34', 'RoomRegisterController@registerRoom');
 
 Route::prefix('home')->group(function (){
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');

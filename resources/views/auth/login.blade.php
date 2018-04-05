@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('/vendor/animate.css') }}" />
     <link rel="stylesheet" href="{{ asset('/css/styles.css') }}" />
 
-    <title>Poreche 33</title>
+    <title>Poreche 34</title>
 </head>
 <body>
 <div class="bgimg">

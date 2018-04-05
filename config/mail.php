@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.yandex.ru'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'poreche34@yandex.ru'),
+        'name' => env('MAIL_FROM_NAME', 'Poreche34'),
     ],
 
     /*
@@ -88,6 +88,9 @@ return [
 
     'password' => env('MAIL_PASSWORD'),
 
+//    'username' => null,
+//    'password' => null,
+
     /*
     |--------------------------------------------------------------------------
     | Sendmail System Path
@@ -111,6 +114,8 @@ return [
     | of the emails. Or, you may simply stick with the Laravel defaults!
     |
     */
+
+//    'pretend' => false
 
     'markdown' => [
         'theme' => 'default',

@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'domain' => env('mg.poreche.com'),
+        'secret' => env('key-691560054b43c6b597f8fa96773a9dd0'),
     ],
 
     'ses' => [

@@ -14,33 +14,39 @@ class HomeController extends Controller
     }
 
     public function index() {
-        $rooms = Room::orderBy('room_number')->paginate(10);
+        $rooms = Room::orderBy('created_at')->paginate(10);
 
         return view('home.homePage', compact(['rooms']));
     }
 
     public function searchRoom(Request $request) {
-        if(!$request->has('keywords') && !$request->has('room-number-search')){
+        if(!$request->has('keywords') && !$request->has('room-number-search')
+            && !$request->has('room-type')){
             return redirect(route('home'));
         }
 
         $roomNumber ='';
         $keywords = '';
+        $roomType = '';
 
         if(!$request->has('room-number-search')) $roomNumber = 0;
         else $roomNumber = intval($request->get('room-number-search'));
         if(!$request->has('keywords')) $keywords = '%';
         else $keywords = $request->get('keywords');
+        if(!$request->has('room-type')) $roomType = 0;
+        else $roomType = intval($request->get('room-type'));
 
-        $rooms = Room::where(function ($query) use ($roomNumber, $keywords){
+        if($roomType < 1 || $roomType > 4) $roomType = 0;
+
+        $rooms = Room::where(function ($query) use ($roomNumber, $keywords, $roomType){
             $query->whereRaw('(room_number=? OR ?=0)', [$roomNumber, $roomNumber])
                 ->where(function ($query) use ($keywords){
                     $query->where('name', 'like', '%'.$keywords.'%')
                         ->orWhere('guests', 'like', '%'.$keywords.'%')
                         ->orWhere('bums', 'like', '%'.$keywords.'%');
-                });
+                })->whereRaw('(room_type=? OR ?=0)', [$roomType, $roomType]);
             })
-            ->orderBy('room_number')
+            ->orderBy('created_at')
             ->paginate(10);
 
         return view('home.homePage', ['rooms' => $rooms->appends(Input::except('page'))]);
@@ -118,6 +124,12 @@ class HomeController extends Controller
         $room->paid_bums = $data['paid-bums'];
         $room->debt_bums = $data['debt-bums'];
         $room->all_bums = $data['all-bums'];
+
+        $room->vk_guests = $data['vk-guests'];
+        $room->phone_guests = $data['phone-guests'];
+
+        $room->bums_vk = $data['bums-vk'];
+        $room->bums_phone = $data['bums-phone'];
 
         $room->comments = $data['comments'];
 
