@@ -14,7 +14,7 @@ class HomeController extends Controller
     }
 
     public function index() {
-        $rooms = Room::orderBy('created_at')->paginate(10);
+        $rooms = Room::orderBy('room_number')->paginate(10);
 
         return view('home.homePage', compact(['rooms']));
     }
@@ -46,7 +46,7 @@ class HomeController extends Controller
                         ->orWhere('bums', 'like', '%'.$keywords.'%');
                 })->whereRaw('(room_type=? OR ?=0)', [$roomType, $roomType]);
             })
-            ->orderBy('created_at')
+            ->orderBy('room_number')
             ->paginate(10);
 
         return view('home.homePage', ['rooms' => $rooms->appends(Input::except('page'))]);
