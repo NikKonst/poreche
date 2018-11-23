@@ -1,0 +1,219 @@
+/**
+    Globals
+ */
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: "Open Sans", sans-serif!important;
+    font-weight:300!important;
+    color: #e6e6e6;
+
+    background:#1d1d1d;
+
+    /*position: relative;*/
+    opacity: 1;
+}
+
+input, button, select, option, a {
+    -webkit-appearance: none;
+    outline: none !important;
+    text-decoration: none !important;
+    padding: 0;
+    margin: 0;
+}
+
+h1,h2 {
+    font-weight:100!important;
+
+}
+
+.delimiters {
+    font-size:5rem;
+    margin-top:-10px;
+}
+
+h1 {
+    font-size:4rem;
+}
+
+h2 {
+    font-size:2.5rem;
+}
+
+/**
+    Images
+ */
+
+
+.logo {
+    padding:50px;
+    width:180px;
+}
+
+
+/**
+    Inputs
+ */
+
+.form-input {
+    background: #E6E6E6;
+    color: #1D1D1D;
+
+    border: 0;
+    border-radius: 20px;
+    padding: 8px 20px;
+
+    font-weight:100!important;
+    font-size: 2rem;
+
+    margin: 10px 0 0;
+
+    transition: 0.5s;
+    -webkit-appearance: none;
+}
+.form-input::placeholder {
+    color: #1a1b1b;
+}
+
+
+.form-input:focus, .select-chosen {
+    background: #b22849 !important;
+    color: #e6e6e6 !important;
+}
+.form-input:focus::placeholder {
+    color: #e6e6e6;
+}
+
+.send-button:disabled, .send-button:disabled:hover {
+    background:#e6e6e6;
+    color:#1d1d1d;
+}
+
+
+.send-button:hover {
+    /*background: #de210e;*/
+    background: #b22849;
+    color: rgba(255,255,255,0.7);
+}
+.send-button {
+    margin: 20px 0 0 5px;
+    background: #d7569c;
+    border: 0;
+    border-radius: 30px;
+    padding: 7px 12px;
+    text-align: center;
+    font-size:1.5rem;
+    font-weight: 600;
+    color: rgba(0,0,0,0.8);
+    transition: 0.5s;
+    cursor: pointer;
+    -webkit-appearance: none;
+    outline:none;
+}
+
+/**
+    Bootstrap select
+ */
+
+.bootstrap-select.btn-group {
+    outline:none!important;
+}
+
+.bootstrap-select .dropdown-toggle:focus {
+    /* outline: thin dotted #333!important; */
+    /* outline: 5px auto -webkit-focus-ring-color!important; */
+    outline:none!important;
+    outline-offset: -2px;
+}
+
+.bootstrap-select.btn-group .dropdown-menu {
+    background: #b22849;
+}
+
+.bootstrap-select.btn-group .dropdown-menu li a:hover {
+    color: whitesmoke !important;
+    background: #bf5279 !important;
+}
+
+.form-booking {
+    margin-bottom:5rem;
+}
+
+/**
+    Checkboxes
+ */
+
+.checkboxes {
+    padding:7px;
+    margin-bottom:-10px;
+}
+
+.form-check {
+    display:inline-block;
+    margin-right:10px;
+    margin-top:4px;
+}
+
+label{
+    position: relative;
+    cursor: pointer;
+    color: #e6e6e6;
+    font-weight:100!important;
+    font-size: 1.9rem;
+}
+
+input[type="checkbox"]{
+    position: absolute;
+    right: 9000px;
+}
+
+/*Check box*/
+input[type="checkbox"] + .label-text:before{
+    content: "\f10c";
+    font-family: "FontAwesome";
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing:antialiased;
+    width: 1em;
+    display: inline-block;
+    margin-right: 7px;
+}
+
+input[type="checkbox"]:checked + .label-text:before{
+    content:"\f058";
+    color: #e6e6e6;
+    animation: effect 250ms ease-in;
+}
+
+input[type="checkbox"]:disabled + .label-text{
+    color: #aaa;
+}
+
+input[type="checkbox"]:disabled + .label-text:before{
+    content: "\f111";
+    color: #ccc;
+}
+
+/**
+    Media
+ */
+@media(max-width:399px){
+    .form-input,
+    .bootstrap-select.btn-group {
+        width:100%!important;
+    }
+}
+
+@media (min-width:400px){
+    .form-input, .bootstrap-select.btn-group {
+        width:35rem!important;
+    }
+}

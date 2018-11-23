@@ -37,7 +37,7 @@ class RoomRegisterController extends Controller
             'phone' => 'required|string|max:20',
             'email' => 'required|string|email|max:255',
             'vk-url' => 'required|string|max:255',
-//            'room-boss' => 'required|string|max:255',
+            //'room-boss' => 'required|string|max:255',
             'room-type' => 'required|integer',
             'guests' => 'required|array',
             'guests-food' => 'required|array',
@@ -62,17 +62,18 @@ class RoomRegisterController extends Controller
         $allTransfer = '';
         $allVKGuests = '';
         $allPhoneGuests = '';
+        
 
-        if($data['food'] == 'on')
+        if(isset($data['food']) && $data['food'] == 'on')
             $allFood = $room->name . '&#13;&#10;';
-        if($data['transfer'] == 'on')
+        if(isset($data['transfer']) && $data['transfer'] == 'on')
             $allTransfer = $room->name . '&#13;&#10;';
 
         foreach ($data['guests'] as $guestNO=>$guest){
             $allGuests = $allGuests . $guest . '&#13;&#10;';
-            if($data['guests-food'][$guestNO] == 'on')
+            if(isset($data['guests-food']) && $data['guests-food'][$guestNO] == 'on')
                 $allFood = $allFood . $guest . '&#13;&#10;';
-            if($data['guests-transfer'][$guestNO] == 'on')
+            if(isset($data['guests-transfer']) && $data['guests-transfer'][$guestNO] == 'on')
                 $allTransfer = $allTransfer . $guest . '&#13;&#10;';
         }
 

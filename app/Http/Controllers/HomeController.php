@@ -14,7 +14,7 @@ class HomeController extends Controller
     }
 
     public function index() {
-        $rooms = Room::orderBy('room_number')->paginate(10);
+        $rooms = Room::orderBy('id')->paginate(10);
 
         return view('home.homePage', compact(['rooms']));
     }

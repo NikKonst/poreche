@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'poreche34@yandex.ru'),
-        'name' => env('MAIL_FROM_NAME', 'Poreche34'),
+        'name' => env('MAIL_FROM_NAME', 'Poreche35'),
     ],
 
     /*
@@ -84,9 +84,8 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
-
-    'password' => env('MAIL_PASSWORD'),
+    'username' => env('MAIL_USERNAME', 'poreche34@yandex.ru'),
+    'password' => env('MAIL_PASSWORD', 'Thah9vet'),
 
 //    'username' => null,
 //    'password' => null,
